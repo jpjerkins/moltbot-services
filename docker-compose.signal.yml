@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  signal-cli:
+    build:
+      context: .
+      dockerfile: signal.Dockerfile
+    container_name: signal-cli
+    platform: linux/arm64/v8
+    environment:
+      - SIGNAL_NUMBER=${SIGNAL_NUMBER}
+    volumes:
+      - signal-data:/var/lib/signal-cli
+    networks:
+      - signal
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+
+volumes:
+  signal-data:
+    external: true
+
+networks:
+  signal:
+    external: true
