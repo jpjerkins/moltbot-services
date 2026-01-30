@@ -14,11 +14,11 @@ ENV SIGNAL_CLI_VERSION=0.13.9
 
 # Download and install signal-cli
 RUN wget -O /tmp/signal-cli.tar.gz \
-    "https://github.com/AsamK/signal-cli/releases/download/v${SIGNAL_CLI_VERSION}/signal-cli-${SIGNAL_CLI_VERSION}-Linux.tar.gz" && \
-    tar -xzf /tmp/signal-cli.tar.gz -C /opt && \
-    mv /opt/signal-cli-${SIGNAL_CLI_VERSION} /opt/signal-cli && \
-    ln -s /opt/signal-cli/bin/signal-cli /usr/local/bin/signal-cli && \
-    rm /tmp/signal-cli.tar.gz
+    "https://github.com/AsamK/signal-cli/releases/download/v${SIGNAL_CLI_VERSION}/signal-cli-${SIGNAL_CLI_VERSION}-Linux.tar.gz"
+RUN tar -xzf /tmp/signal-cli.tar.gz -C /opt
+RUN mv /opt/signal-cli-${SIGNAL_CLI_VERSION} /opt/signal-cli
+RUN ln -s /opt/signal-cli/bin/signal-cli /usr/local/bin/signal-cli
+RUN rm /tmp/signal-cli.tar.gz
 
 # Create signal-cli data directory
 RUN mkdir -p /var/lib/signal-cli

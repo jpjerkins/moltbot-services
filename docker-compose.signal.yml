@@ -5,6 +5,9 @@ services:
     build:
       context: .
       dockerfile: signal.Dockerfile
+      args:
+        SIGNAL_CLI_VERSION=${SIGNAL_CLI_VERSION}
+        SIGNAL_NUMBER=${SIGNAL_NUMBER}
     container_name: signal-cli
     platform: linux/arm64/v8
     environment:
@@ -15,7 +18,7 @@ services:
       - signal
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8086:8080"
 
 volumes:
   signal-data:
