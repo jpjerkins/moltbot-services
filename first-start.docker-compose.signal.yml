@@ -5,7 +5,6 @@ services:
     build:
       context: .
       dockerfile: signal.Dockerfile
-      args:
     container_name: signal-cli
     platform: linux/arm64/v8
     environment:
