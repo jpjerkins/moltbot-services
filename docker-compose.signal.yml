@@ -10,8 +10,8 @@ services:
     container_name: signal-cli
     platform: linux/arm64/v8
     environment:
-      - DEVICE_NAME: ${DEVICE_NAME:-pi5}
-      - MODE: ${MODE:-link}
+        DEVICE_NAME: ${DEVICE_NAME:-pi5}
+        MODE: ${MODE:-link}
     volumes:
       - signal-data:/var/lib/signal-cli
     networks:
