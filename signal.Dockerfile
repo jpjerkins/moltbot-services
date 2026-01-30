@@ -7,7 +7,8 @@ RUN apk add --no-cache \
     tar \
     dbus \
     libstdc++ \
-    gcompat
+    gcompat \
+    curl
 
 # Set signal-cli version
 ENV SIGNAL_CLI_VERSION=0.13.9
