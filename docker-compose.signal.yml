@@ -17,8 +17,6 @@ services:
     restart: "unless-stopped"
     ports:
       - "8086:8080"
-    stdin_open: true  # Enable interactive mode for linking
-    tty: true         # Allocate a pseudo-TTY
 
 volumes:
   signal-data:
