@@ -15,7 +15,7 @@ if [ "$MODE" = "link" ]; then
     echo "Starting linking process..."
     echo "Scan the QR code or enter the URL shown below in the Signal app on your phone."
     echo ""
-    signal-cli link -n "$DEVICE_NAME"
+    signal-cli link -n "$DEVICE_NAME" --config /var/lib/signal-cli
     echo ""
     echo "========================================="
     echo "Linking complete!"
@@ -23,7 +23,7 @@ if [ "$MODE" = "link" ]; then
     echo "========================================="
 elif [ "$MODE" = "daemon" ]; then
     echo "Starting Signal CLI in daemon mode..."
-    exec signal-cli -a "$SIGNAL_NUMBER" daemon --http 0.0.0.0:8080
+    exec signal-cli -a "$SIGNAL_NUMBER" daemon --http 0.0.0.0:8080 --config /var/lib/signal-cli
 else
     echo "Error: MODE must be either 'link' or 'daemon'"
     exit 1

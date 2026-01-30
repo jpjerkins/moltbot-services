@@ -35,7 +35,6 @@ EXPOSE 8080
 
 # Default device name for linking
 ENV DEVICE_NAME="signal-cli"
-ENV MODE="link"
 
 # Copy entrypoint script
 COPY entrypoint.sh /entrypoint.sh
