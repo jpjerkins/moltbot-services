@@ -6,12 +6,12 @@ services:
       context: .
       dockerfile: signal.Dockerfile
       args:
-        SIGNAL_CLI_VERSION=${SIGNAL_CLI_VERSION}
+        SIGNAL_CLI_VERSION: ${SIGNAL_CLI_VERSION}
     container_name: signal-cli
     platform: linux/arm64/v8
     environment:
-      - DEVICE_NAME=${DEVICE_NAME:-pi5}
-      - MODE=${MODE:-daemon}
+      - DEVICE_NAME: ${DEVICE_NAME:-pi5}
+      - MODE: ${MODE:-daemon}
     volumes:
       - signal-data:/var/lib/signal-cli
     networks:
