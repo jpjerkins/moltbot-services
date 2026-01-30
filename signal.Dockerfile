@@ -1,21 +1,24 @@
 FROM alpine:latest
 
+RUN mkdir -p /var/run/dbus
+
 # Install dependencies
 RUN apk add --no-cache \
-    openjdk17-jre \
+    openjdk25-jre \
     wget \
     tar \
     dbus \
     libstdc++ \
     gcompat \
-    curl
+    curl \
+		java-libsignal-client
 
 # Set signal-cli version
 ENV SIGNAL_CLI_VERSION=0.13.9
 
 # Download and install signal-cli
 RUN VERSION=$(curl -Ls -o /dev/null -w %{url_effective} https://github.com/AsamK/signal-cli/releases/latest | sed -e 's/^.*\/v//') && \
-    curl -L -O https://github.com/AsamK/signal-cli/releases/download/v"${VERSION}"/signal-cli-"${VERSION}".tar.gz && \
+    curl -L -o /tmp/signal-cli.tar.gz https://github.com/AsamK/signal-cli/releases/download/v"${VERSION}"/signal-cli-"${VERSION}".tar.gz && \
     tar -xzf /tmp/signal-cli.tar.gz -C /opt && \
     mv /opt/signal-cli-${VERSION} /opt/signal-cli && \
     ln -s /opt/signal-cli/bin/signal-cli /usr/local/bin/signal-cli && \
