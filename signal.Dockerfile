@@ -29,5 +29,12 @@ WORKDIR /var/lib/signal-cli
 # Expose the daemon port
 EXPOSE 8080
 
-# Start dbus and signal-cli in daemon mode
-CMD ["sh", "-c", "dbus-daemon --system --fork && signal-cli -a ${SIGNAL_NUMBER} daemon --http 0.0.0.0:8080"]
+# Default device name for linking
+ENV DEVICE_NAME="signal-cli"
+ENV MODE="link"
+
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

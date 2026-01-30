@@ -11,12 +11,12 @@ services:
     platform: linux/arm64/v8
     environment:
       - DEVICE_NAME=${DEVICE_NAME:-pi5}
-      - MODE=${MODE:-link}
+      - MODE=${MODE:-daemon}
     volumes:
       - signal-data:/var/lib/signal-cli
     networks:
       - signal
-    restart: "unless-stopped"
+    restart: "no"  # Don't restart automatically during linking
     ports:
       - "8086:8080"
     stdin_open: true  # Enable interactive mode for linking
