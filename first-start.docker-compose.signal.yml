@@ -12,6 +12,7 @@ services:
     environment:
         DEVICE_NAME: ${DEVICE_NAME:-pi5}
         MODE: ${MODE:-daemon}
+        SIGNAL_CLI_VERSION: ${SIGNAL_CLI_VERSION}
     volumes:
       - signal-data:/var/lib/signal-cli
     networks:
